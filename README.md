@@ -71,7 +71,7 @@ La carpeta a copiar es **`skills/linkedin-profile-optimizer` completa**, incluid
 
 En Windows también se puede usar **Git Bash** o **WSL** con los comandos de macOS/Linux. Desde WSL, `$HOME` apunta al sistema Linux, no a `%USERPROFILE%`; usar PowerShell si Codex se ejecuta en Windows.
 
-Los comandos se ejecutan desde la carpeta donde se quiere clonar el repositorio. Si ya existe una skill con ese nombre, no se sobrescribe: revisar diferencias antes de reemplazarla. La instalación usa `main`, que puede contener actualizaciones posteriores. Para reproducir una edición, reemplazar `main` por un tag publicado (por ejemplo `v1.0.0`) o usar un commit concreto.
+Los comandos se ejecutan desde la carpeta donde se quiere clonar el repositorio. Si ya existe una skill con ese nombre, no se sobrescribe: revisar diferencias antes de reemplazarla. La instalación usa `main`, que puede contener actualizaciones posteriores. Para reproducir una edición, reemplazar `main` por `ChatGPT` o usar un commit concreto. El tag [ChatGPT](https://github.com/eruizpy/it_skills_linkedin/tree/ChatGPT) fija esta entrega de ChatGPT/Codex.
 
 ### macOS / Linux (bash o zsh)
 
@@ -313,7 +313,7 @@ The repository also preserves the separate **linkedin-perfil-tech** Claude varia
 
 It delivers a prioritized review, an evidence ledger, a relevant job-posting comparison, a bilingual keyword map, profile copy, skills/Featured recommendations and a 30-day measurement plan. It separates professional experience, personal projects and learning, and preserves the same facts in both languages.
 
-Use the installation commands above to copy the whole skill folder: the `bash` block works on macOS and Linux (and in Git Bash on Windows), and the `powershell` block works on Windows PowerShell 5.1 and PowerShell 7+. To run the optional helper, use `python3` on macOS/Linux and `py` (or `python`) on Windows. For ChatGPT environments without skill installation, attach the instructions, references and intake form for manual use. Live market research requires browsing; without it, the output explicitly limits claims to supplied material.
+For this reproducible ChatGPT/Codex edition, replace `main` with the `ChatGPT` tag in the clone command. Use the installation commands above to copy the whole skill folder: the `bash` block works on macOS and Linux (and in Git Bash on Windows), and the `powershell` block works on Windows PowerShell 5.1 and PowerShell 7+. To run the optional helper, use `python3` on macOS/Linux and `py` (or `python`) on Windows. For ChatGPT environments without skill installation, attach the instructions, references and intake form for manual use. Live market research requires browsing; without it, the output explicitly limits claims to supplied material.
 
 ```text
 Use $linkedin-profile-optimizer to review my LinkedIn profile.

@@ -154,9 +154,11 @@ class ProfileContractTests(unittest.TestCase):
 
 class CommandLineContractTests(unittest.TestCase):
     def run_cli(self, arguments):
+        # Match the pipe decoder on Windows as well as UTF-8 locales.
+        environment = dict(os.environ, PYTHONIOENCODING="utf-8")
         return subprocess.run([sys.executable, "-B", str(SCRIPT_PATH), *arguments],
                               text=True, encoding="utf-8", capture_output=True,
-                              check=False, timeout=10)
+                              check=False, timeout=10, env=environment)
 
     def run_document(self, document, *options):
         with tempfile.TemporaryDirectory() as directory:
