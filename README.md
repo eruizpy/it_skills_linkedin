@@ -9,7 +9,7 @@ Colección de skills para mejorar perfiles de LinkedIn de profesionales de tecno
 | Skill | Entorno objetivo | Ubicación | Versión publicada | Instalación | Documentación |
 | --- | --- | --- | --- | --- | --- |
 | **linkedin-profile-optimizer** | **OpenAI ChatGPT / Codex**; identificador **ChatGPT** | [Carpeta completa](skills/linkedin-profile-optimizer/) | Tag [`ChatGPT`](https://github.com/eruizpy/it_skills_linkedin/tree/ChatGPT) | [Instalación en Codex](#instalación-en-codex) | Guía detallada y know-how en este README |
-| **linkedin-perfil-tech** | Claude / Anthropic | [Skill](linkedin-perfil-tech/SKILL.md) | [Release `v1.0.1`](https://github.com/eruizpy/it_skills_linkedin/releases/latest) con `.zip` | [Instalación en Claude](#instalación-en-claude) | [Guía de Claude conservada](docs/claude-guide.md) |
+| **linkedin-perfil-tech** | Claude / Anthropic | [Skill](linkedin-perfil-tech/SKILL.md) | [Release `v1.0.2`](https://github.com/eruizpy/it_skills_linkedin/releases/latest) con `.zip` | [Instalación en Claude](#instalación-en-claude) | [Guía de Claude conservada](docs/claude-guide.md) |
 
 Cada variante tiene su propio procedimiento. La guía operativa, las plantillas, el helper y las verificaciones descritas a continuación corresponden a **ChatGPT/Codex**. La variante Claude incorporada al repositorio se conserva; su instalación multiplataforma está en [Instalación en Claude](#instalación-en-claude) y su uso, en la [guía de Claude](docs/claude-guide.md).
 
@@ -141,7 +141,7 @@ if (Test-Path $skillDestination) {
 }
 ```
 
-Para instalarla solo en un proyecto, usar destino `.claude/skills/linkedin-perfil-tech` (macOS/Linux) o `.claude\skills\linkedin-perfil-tech` (Windows) dentro de la raíz del proyecto. Para reproducir una versión, reemplazar `main` por su tag (por ejemplo `v1.0.1`).
+Para instalarla solo en un proyecto, usar destino `.claude/skills/linkedin-perfil-tech` (macOS/Linux) o `.claude\skills\linkedin-perfil-tech` (Windows) dentro de la raíz del proyecto. Para reproducir una versión, reemplazar `main` por su tag (por ejemplo `v1.0.2`).
 
 ## Uso en ChatGPT
 
@@ -331,6 +331,7 @@ Usar versiones semánticas (`vMAJOR.MINOR.PATCH`) para futuras publicaciones: `P
 | --- | --- | --- |
 | [`v1.0.0`](https://github.com/eruizpy/it_skills_linkedin/releases/tag/v1.0.0) | Claude (`linkedin-perfil-tech`) | Primera versión estable; release con `.zip` |
 | [`v1.0.1`](https://github.com/eruizpy/it_skills_linkedin/releases/tag/v1.0.1) | Claude (`linkedin-perfil-tech`) | Misma skill; README multiplataforma; release con `.zip` |
+| [`v1.0.2`](https://github.com/eruizpy/it_skills_linkedin/releases/tag/v1.0.2) | Claude (`linkedin-perfil-tech`) | Misma skill; README estandarizado para ambas variantes e instalación multiplataforma de Claude; release con `.zip` |
 | [`ChatGPT`](https://github.com/eruizpy/it_skills_linkedin/tree/ChatGPT) | ChatGPT / Codex (`linkedin-profile-optimizer`) | Entrega identificada como edición `ChatGPT` |
 
 Los comandos de instalación usan `main`. Para compartir versiones reproducibles, utilizar uno de estos tags o el SHA de un commit. Preservar los tags ya publicados y crear nuevos tags semánticos para las siguientes entregas de cualquiera de las variantes.
