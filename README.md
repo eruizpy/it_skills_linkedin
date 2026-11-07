@@ -61,25 +61,47 @@ Los corchetes del prompt son campos a completar, no contenido para publicar. En 
 
 La carpeta a copiar es **`skills/linkedin-profile-optimizer` completa**, incluidos `references`, `assets`, `agents` y `scripts`. Para uso personal, Codex descubre skills en `~/.agents/skills`; para un proyecto, en `.agents/skills`. [Referencia](https://learn.chatgpt.com/docs/build-skills).
 
-### macOS / Linux
+### Requisitos por sistema operativo
+
+| Sistema | Terminal | Requisitos | Carpeta personal de skills |
+| --- | --- | --- | --- |
+| macOS | Terminal (zsh/bash) | `git`; Python 3 opcional (`python3`) | `~/.agents/skills` |
+| Linux | bash/zsh | `git`; Python 3 opcional (`python3`) | `~/.agents/skills` |
+| Windows 10/11 | PowerShell 5.1 o 7+ | [Git for Windows](https://git-scm.com/download/win); Python 3 opcional (`py` o `python`) | `%USERPROFILE%\.agents\skills` |
+
+En Windows también se puede usar **Git Bash** o **WSL** con los comandos de macOS/Linux. Desde WSL, `$HOME` apunta al sistema Linux, no a `%USERPROFILE%`; usar PowerShell si Codex se ejecuta en Windows.
+
+Los comandos se ejecutan desde la carpeta donde se quiere clonar el repositorio. Si ya existe una skill con ese nombre, no se sobrescribe: revisar diferencias antes de reemplazarla. La instalación usa `main`, que puede contener actualizaciones posteriores. Para reproducir una edición, reemplazar `main` por un tag publicado (por ejemplo `v1.0.0`) o usar un commit concreto.
+
+### macOS / Linux (bash o zsh)
 
 ```bash
 git clone --branch main --depth 1 https://github.com/eruizpy/it_skills_linkedin.git
-mkdir -p "$HOME/.agents/skills"
-cp -R it_skills_linkedin/skills/linkedin-profile-optimizer "$HOME/.agents/skills/"
+skill_destination="$HOME/.agents/skills/linkedin-profile-optimizer"
+if [ -e "$skill_destination" ]; then
+  echo "La skill ya existe; revisa las diferencias antes de reemplazarla." >&2
+else
+  mkdir -p "$HOME/.agents/skills"
+  cp -R it_skills_linkedin/skills/linkedin-profile-optimizer "$skill_destination"
+  ls "$skill_destination"
+fi
 ```
 
-Si ya existe una skill con ese nombre, revisar diferencias antes de reemplazarla. La instalación usa `main`, que puede contener actualizaciones posteriores. Para reproducir una edición, utilizar un tag publicado o un commit concreto.
-
-### Windows PowerShell
+### Windows (PowerShell)
 
 ```powershell
 git clone --branch main --depth 1 https://github.com/eruizpy/it_skills_linkedin.git
-$skillDestination = Join-Path $HOME '.agents/skills/linkedin-profile-optimizer'
-if (Test-Path $skillDestination) { throw 'La skill ya existe; revisa las diferencias antes de reemplazarla.' }
-New-Item -ItemType Directory -Path (Split-Path $skillDestination) -Force | Out-Null
-Copy-Item -Recurse 'it_skills_linkedin/skills/linkedin-profile-optimizer' $skillDestination
+$skillDestination = Join-Path $HOME '.agents\skills\linkedin-profile-optimizer'
+if (Test-Path $skillDestination) {
+  Write-Warning 'La skill ya existe; revisa las diferencias antes de reemplazarla.'
+} else {
+  New-Item -ItemType Directory -Path (Split-Path $skillDestination) -Force | Out-Null
+  Copy-Item -Recurse 'it_skills_linkedin\skills\linkedin-profile-optimizer' $skillDestination
+  Get-ChildItem $skillDestination
+}
 ```
+
+Para instalar la skill solo en un proyecto, usar la misma secuencia con destino `.agents/skills/linkedin-profile-optimizer` (macOS/Linux) o `.agents\skills\linkedin-profile-optimizer` (Windows) dentro de la raíz del proyecto.
 
 ## Uso en ChatGPT
 
@@ -99,10 +121,23 @@ Las recomendaciones de texto son borradores. Publicar cambios, modificar prefere
 
 El helper revisa únicamente los campos `headline` y `about` en los objetos `es` y `en` de un JSON UTF-8. Cuenta puntos de código Unicode y detecta algunos marcadores pendientes. No evalúa la verdad del perfil ni la calidad de la traducción.
 
+Requiere Python 3 sin dependencias externas. Ejecutar desde la raíz del repositorio:
+
+**macOS / Linux**
+
 ```bash
 python3 skills/linkedin-profile-optimizer/scripts/check_profile.py skills/linkedin-profile-optimizer/assets/profile.example.json
 python3 -m unittest discover -s tests -v
 ```
+
+**Windows (PowerShell)**
+
+```powershell
+py skills\linkedin-profile-optimizer\scripts\check_profile.py skills\linkedin-profile-optimizer\assets\profile.example.json
+py -m unittest discover -s tests -v
+```
+
+En Windows, `py` es el lanzador que instala Python desde python.org. Si no está disponible (por ejemplo, con la versión de Microsoft Store), usar `python` en su lugar. El helper lee el JSON como UTF-8 en todos los sistemas, por lo que no depende de la página de códigos de la consola.
 
 Los objetivos por defecto son **editoriales**: 180 caracteres de titular y 2.000 de About. No se presentan como límites oficiales. Se pueden ajustar con `--headline-target` y `--about-target` después de verificar la interfaz.
 
@@ -278,7 +313,7 @@ The repository also preserves the separate **linkedin-perfil-tech** Claude varia
 
 It delivers a prioritized review, an evidence ledger, a relevant job-posting comparison, a bilingual keyword map, profile copy, skills/Featured recommendations and a 30-day measurement plan. It separates professional experience, personal projects and learning, and preserves the same facts in both languages.
 
-Use the installation commands above to copy the whole skill folder. For ChatGPT environments without skill installation, attach the instructions, references and intake form for manual use. Live market research requires browsing; without it, the output explicitly limits claims to supplied material.
+Use the installation commands above to copy the whole skill folder: the `bash` block works on macOS and Linux (and in Git Bash on Windows), and the `powershell` block works on Windows PowerShell 5.1 and PowerShell 7+. To run the optional helper, use `python3` on macOS/Linux and `py` (or `python`) on Windows. For ChatGPT environments without skill installation, attach the instructions, references and intake form for manual use. Live market research requires browsing; without it, the output explicitly limits claims to supplied material.
 
 ```text
 Use $linkedin-profile-optimizer to review my LinkedIn profile.
