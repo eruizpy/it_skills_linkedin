@@ -6,12 +6,12 @@ Colección de skills para mejorar perfiles de LinkedIn de profesionales de tecno
 
 ## Catálogo de skills
 
-| Skill | Entorno objetivo | Ubicación | Documentación |
-| --- | --- | --- | --- |
-| **linkedin-profile-optimizer** | **OpenAI ChatGPT / Codex**; identificador **ChatGPT** | [Carpeta completa](skills/linkedin-profile-optimizer/) | Guía detallada y know-how en este README |
-| **linkedin-perfil-tech** | Claude / Anthropic, según su documentación | [Skill existente](linkedin-perfil-tech/SKILL.md) | [Guía de Claude conservada](docs/claude-guide.md) |
+| Skill | Entorno objetivo | Ubicación | Versión publicada | Instalación | Documentación |
+| --- | --- | --- | --- | --- | --- |
+| **linkedin-profile-optimizer** | **OpenAI ChatGPT / Codex**; identificador **ChatGPT** | [Carpeta completa](skills/linkedin-profile-optimizer/) | Tag [`ChatGPT`](https://github.com/eruizpy/it_skills_linkedin/tree/ChatGPT) | [Instalación en Codex](#instalación-en-codex) | Guía detallada y know-how en este README |
+| **linkedin-perfil-tech** | Claude / Anthropic | [Skill](linkedin-perfil-tech/SKILL.md) | [Release `v1.0.1`](https://github.com/eruizpy/it_skills_linkedin/releases/latest) con `.zip` | [Instalación en Claude](#instalación-en-claude) | [Guía de Claude conservada](docs/claude-guide.md) |
 
-Cada variante tiene su propio procedimiento. La guía operativa, las plantillas, el helper y las verificaciones descritas a continuación corresponden a **ChatGPT/Codex**. La variante Claude incorporada al repositorio se conserva; su documentación incluye sus propias instrucciones de instalación y uso.
+Cada variante tiene su propio procedimiento. La guía operativa, las plantillas, el helper y las verificaciones descritas a continuación corresponden a **ChatGPT/Codex**. La variante Claude incorporada al repositorio se conserva; su instalación multiplataforma está en [Instalación en Claude](#instalación-en-claude) y su uso, en la [guía de Claude](docs/claude-guide.md).
 
 [English guide](#english-guide) · [Skill](skills/linkedin-profile-optimizer/SKILL.md) · [Know-how](#know-how-cómo-realizar-un-buen-análisis) · [Colaborar](#cómo-colaborar-y-construir-mejores-versiones) · [Formulario de entrada](skills/linkedin-profile-optimizer/assets/intake.md) · [Fuentes](skills/linkedin-profile-optimizer/references/sources.md) · [Edición ChatGPT](skills/linkedin-profile-optimizer/)
 
@@ -71,7 +71,7 @@ La carpeta a copiar es **`skills/linkedin-profile-optimizer` completa**, incluid
 
 En Windows también se puede usar **Git Bash** o **WSL** con los comandos de macOS/Linux. Desde WSL, `$HOME` apunta al sistema Linux, no a `%USERPROFILE%`; usar PowerShell si Codex se ejecuta en Windows.
 
-Los comandos se ejecutan desde la carpeta donde se quiere clonar el repositorio. Si ya existe una skill con ese nombre, no se sobrescribe: revisar diferencias antes de reemplazarla. La instalación usa `main`, que puede contener actualizaciones posteriores. Para reproducir una edición, reemplazar `main` por `ChatGPT` o usar un commit concreto. El tag [ChatGPT](https://github.com/eruizpy/it_skills_linkedin/tree/ChatGPT) fija esta entrega de ChatGPT/Codex.
+Los comandos se ejecutan desde la carpeta donde se quiere clonar el repositorio. Si ya existe una skill con ese nombre, no se sobrescribe: revisar diferencias antes de reemplazarla. La instalación usa `main`, que puede contener actualizaciones posteriores. Para reproducir esta entrega de ChatGPT/Codex, reemplazar `main` por el tag `ChatGPT` o por un commit concreto (ver [Versionado](#versionado)).
 
 ### macOS / Linux (bash o zsh)
 
@@ -102,6 +102,46 @@ if (Test-Path $skillDestination) {
 ```
 
 Para instalar la skill solo en un proyecto, usar la misma secuencia con destino `.agents/skills/linkedin-profile-optimizer` (macOS/Linux) o `.agents\skills\linkedin-profile-optimizer` (Windows) dentro de la raíz del proyecto.
+
+## Instalación en Claude
+
+La variante **`linkedin-perfil-tech`** se distribuye como `.zip` en cada [release](https://github.com/eruizpy/it_skills_linkedin/releases/latest). El paquete contiene solo `linkedin-perfil-tech/SKILL.md`. Los requisitos por sistema operativo son los de la [tabla anterior](#requisitos-por-sistema-operativo); Python no es necesario.
+
+| Entorno | Pasos |
+| --- | --- |
+| claude.ai (web, desktop, móvil) | Descargar [`linkedin-perfil-tech.zip`](https://github.com/eruizpy/it_skills_linkedin/releases/latest/download/linkedin-perfil-tech.zip) y subirlo en **Personalizar → Habilidades → + → Crear habilidad → Subir una habilidad**. Requiere ejecución de código habilitada. |
+| Claude Code | Copiar la carpeta `linkedin-perfil-tech` a `~/.claude/skills/` (personal) o a `.claude/skills/` (proyecto) con los comandos siguientes. Verificar con `/skills`. |
+| Claude API | Subir el `.zip` con la Skills API (`/v1/skills`). [Documentación](https://docs.claude.com/en/api/skills-guide). |
+
+### macOS / Linux (bash o zsh)
+
+```bash
+git clone --branch main --depth 1 https://github.com/eruizpy/it_skills_linkedin.git
+skill_destination="$HOME/.claude/skills/linkedin-perfil-tech"
+if [ -e "$skill_destination" ]; then
+  echo "La skill ya existe; revisa las diferencias antes de reemplazarla." >&2
+else
+  mkdir -p "$HOME/.claude/skills"
+  cp -R it_skills_linkedin/linkedin-perfil-tech "$skill_destination"
+  ls "$skill_destination"
+fi
+```
+
+### Windows (PowerShell)
+
+```powershell
+git clone --branch main --depth 1 https://github.com/eruizpy/it_skills_linkedin.git
+$skillDestination = Join-Path $HOME '.claude\skills\linkedin-perfil-tech'
+if (Test-Path $skillDestination) {
+  Write-Warning 'La skill ya existe; revisa las diferencias antes de reemplazarla.'
+} else {
+  New-Item -ItemType Directory -Path (Split-Path $skillDestination) -Force | Out-Null
+  Copy-Item -Recurse 'it_skills_linkedin\linkedin-perfil-tech' $skillDestination
+  Get-ChildItem $skillDestination
+}
+```
+
+Para instalarla solo en un proyecto, usar destino `.claude/skills/linkedin-perfil-tech` (macOS/Linux) o `.claude\skills\linkedin-perfil-tech` (Windows) dentro de la raíz del proyecto. Para reproducir una versión, reemplazar `main` por su tag (por ejemplo `v1.0.1`).
 
 ## Uso en ChatGPT
 
@@ -248,7 +288,7 @@ Usar [Issues](https://github.com/eruizpy/it_skills_linkedin/issues) con esta est
 ```text
 Problema u oportunidad:
 Versión/tag/commit utilizado:
-Entorno: ChatGPT / Codex; con o sin navegación; Python si corresponde:
+Variante y entorno: ChatGPT / Codex o Claude; con o sin navegación; sistema operativo; Python si corresponde:
 Caso mínimo ficticio o anonimizado:
 Resultado observado:
 Resultado esperado y por qué:
@@ -285,9 +325,15 @@ Las pruebas automáticas comprueban el helper. Los casos de comportamiento compr
 
 ### Versionado
 
-Usar versiones semánticas para futuras publicaciones: `PATCH` para correcciones compatibles, `MINOR` para capacidades compatibles y `MAJOR` para cambios que requieran adaptar el uso. Registrar qué cambió y qué se probó en la descripción de la publicación.
+Usar versiones semánticas (`vMAJOR.MINOR.PATCH`) para futuras publicaciones: `PATCH` para correcciones compatibles, `MINOR` para capacidades compatibles y `MAJOR` para cambios que requieran adaptar el uso. Registrar qué cambió y qué se probó en la descripción de la publicación.
 
-La edición se identifica con `ChatGPT` para ChatGPT/Codex. Los comandos de instalación usan `main`. Para compartir versiones reproducibles, utilizar un tag publicado o el SHA de un commit. Preservar los tags ya publicados y crear nuevos tags de versión para las siguientes entregas.
+| Tag | Variante | Contenido |
+| --- | --- | --- |
+| [`v1.0.0`](https://github.com/eruizpy/it_skills_linkedin/releases/tag/v1.0.0) | Claude (`linkedin-perfil-tech`) | Primera versión estable; release con `.zip` |
+| [`v1.0.1`](https://github.com/eruizpy/it_skills_linkedin/releases/tag/v1.0.1) | Claude (`linkedin-perfil-tech`) | Misma skill; README multiplataforma; release con `.zip` |
+| [`ChatGPT`](https://github.com/eruizpy/it_skills_linkedin/tree/ChatGPT) | ChatGPT / Codex (`linkedin-profile-optimizer`) | Entrega identificada como edición `ChatGPT` |
+
+Los comandos de instalación usan `main`. Para compartir versiones reproducibles, utilizar uno de estos tags o el SHA de un commit. Preservar los tags ya publicados y crear nuevos tags semánticos para las siguientes entregas de cualquiera de las variantes.
 
 
 ## Estructura y mantenimiento
@@ -309,11 +355,11 @@ Fuentes revisadas el **7 de noviembre de 2026**. Verificar nuevamente funcionali
 
 **LinkedIn Profile Optimizer** is a reusable ChatGPT/Codex skill for evidence-based professional profiles in Spanish and English. It supports software engineering, software analysis, QA, test automation and AI-related roles, with attention to remote and hybrid hiring constraints.
 
-The repository also preserves the separate **linkedin-perfil-tech** Claude variant. See its [existing guide](docs/claude-guide.md). The workflow, helper and validation results below describe the ChatGPT/Codex variant.
+The repository also preserves the separate **linkedin-perfil-tech** Claude variant, published as a `.zip` in each [release](https://github.com/eruizpy/it_skills_linkedin/releases/latest). Install it with the [Claude installation](#instalación-en-claude) commands (macOS, Linux and Windows) and see its [existing guide](docs/claude-guide.md) for usage. The workflow, helper and validation results below describe the ChatGPT/Codex variant.
 
 It delivers a prioritized review, an evidence ledger, a relevant job-posting comparison, a bilingual keyword map, profile copy, skills/Featured recommendations and a 30-day measurement plan. It separates professional experience, personal projects and learning, and preserves the same facts in both languages.
 
-For this reproducible ChatGPT/Codex edition, replace `main` with the `ChatGPT` tag in the clone command. Use the installation commands above to copy the whole skill folder: the `bash` block works on macOS and Linux (and in Git Bash on Windows), and the `powershell` block works on Windows PowerShell 5.1 and PowerShell 7+. To run the optional helper, use `python3` on macOS/Linux and `py` (or `python`) on Windows. For ChatGPT environments without skill installation, attach the instructions, references and intake form for manual use. Live market research requires browsing; without it, the output explicitly limits claims to supplied material.
+For a reproducible install, replace `main` in the clone command with a published tag: `ChatGPT` for the ChatGPT/Codex edition or a `vX.Y.Z` tag for the Claude variant (see [Versionado](#versionado)). Use the installation commands above to copy the whole skill folder: the `bash` block works on macOS and Linux (and in Git Bash on Windows), and the `powershell` block works on Windows PowerShell 5.1 and PowerShell 7+. To run the optional helper, use `python3` on macOS/Linux and `py` (or `python`) on Windows. For ChatGPT environments without skill installation, attach the instructions, references and intake form for manual use. Live market research requires browsing; without it, the output explicitly limits claims to supplied material.
 
 ```text
 Use $linkedin-profile-optimizer to review my LinkedIn profile.

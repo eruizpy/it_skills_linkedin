@@ -1,6 +1,6 @@
 # Guía conservada de la variante Claude
 
-Este documento conserva el README incorporado por la variante `linkedin-perfil-tech` el 2026-11-07. Para el catálogo conjunto y la guía ChatGPT/Codex, consultar [README principal](../README.md). Las afirmaciones y pasos específicos de Claude pertenecen a esa variante; las verificaciones del helper ChatGPT/Codex no la cubren.
+Este documento conserva el README incorporado por la variante `linkedin-perfil-tech` el 2026-11-07. Para el catálogo conjunto y la guía ChatGPT/Codex, consultar [README principal](../README.md). Las afirmaciones y pasos específicos de Claude pertenecen a esa variante; las verificaciones del helper ChatGPT/Codex no la cubren. Para instalarla en macOS, Linux o Windows, usar la sección [Instalación en Claude](../README.md#instalación-en-claude) del README principal o el `.zip` de cada [release](https://github.com/eruizpy/it_skills_linkedin/releases/latest); los comandos de abajo son los originales para macOS/Linux.
 
 ---
 
@@ -73,5 +73,5 @@ Cuanto más aportes (2–3 roles objetivo, 3–5 vacantes reales, logros con nú
 
 ## Atribución y licencia
 
-Skill redactada con **Claude** (Anthropic) para ser aplicada por modelos Claude. Código y texto bajo licencia **GPL-3.0** (ver `LICENSE`). Las marcas LinkedIn, GitHub y otras citadas pertenecen a sus respectivos dueños; este proyecto no está afiliado a ellas.
+Skill creada por **eruizpy** para ser aplicada por modelos Claude (Anthropic). Código y texto bajo licencia **GPL-3.0** (ver `LICENSE`). Las marcas LinkedIn, GitHub y otras citadas pertenecen a sus respectivos dueños; este proyecto no está afiliado a ellas.
 
