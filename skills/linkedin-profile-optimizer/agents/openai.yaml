@@ -1,0 +1,4 @@
+interface:
+  display_name: "LinkedIn Profile Optimizer · ChatGPT"
+  short_description: "Perfiles ES/EN de Software, QA e IA para reclutadores"
+  default_prompt: "Usa $linkedin-profile-optimizer para auditar mi perfil y preparar mejoras ES/EN basadas en evidencia para empleos remotos e híbridos."

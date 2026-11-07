@@ -1,0 +1,11 @@
+{
+  "_note": "EJEMPLO SINTÉTICO: persona y trayectoria ficticias para probar el formato. No describe al usuario ni constituye una plantilla de afirmaciones que deban atribuirse a un candidato.",
+  "es": {
+    "headline": "QA en formación | Pruebas de API y diseño de casos | Proyecto personal de automatización",
+    "about": "Este perfil ficticio ilustra una transición hacia QA. En un proyecto personal de una aplicación de tareas, practico el análisis de requisitos, las pruebas exploratorias y la validación de una API. Documento riesgos, casos de prueba y defectos reproducibles.\n\nEstoy aprendiendo a automatizar comprobaciones e integrarlas en un flujo de CI. Mi objetivo profesional es un rol de QA que permita seguir desarrollando estas capacidades. El proyecto es formativo y no representa experiencia laboral en producción."
+  },
+  "en": {
+    "headline": "Aspiring QA Analyst | API testing and test design | Personal automation project",
+    "about": "This fictional profile illustrates a transition into QA. In a personal task management application project, I practice requirements analysis, exploratory testing, and API validation. I document risks, test cases, and reproducible defects.\n\nI am learning to automate checks and integrate them into a CI workflow. My career goal is a QA role where I can continue developing these skills. This is a learning project and does not represent professional production experience."
+  }
+}
