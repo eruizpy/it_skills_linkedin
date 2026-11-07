@@ -1,6 +1,6 @@
 # IT Skills LinkedIn — ChatGPT / Codex y Claude
 
-**Tag: `ChatGPT` · Español / English · Software Engineering · QA / SDET · AI**
+**Edición: `ChatGPT` · Español / English · Software Engineering · QA / SDET · AI**
 
 Colección de skills para mejorar perfiles de LinkedIn de profesionales de tecnología. La variante **LinkedIn Profile Optimizer — ChatGPT / Codex** convierte experiencia real en contenido ES/EN para oportunidades remotas e híbridas, contrastando competencias con vacantes actuales cuando dispone de navegación.
 
@@ -8,12 +8,12 @@ Colección de skills para mejorar perfiles de LinkedIn de profesionales de tecno
 
 | Skill | Entorno objetivo | Ubicación | Documentación |
 | --- | --- | --- | --- |
-| **linkedin-profile-optimizer** | **OpenAI ChatGPT / Codex**; tag **ChatGPT** | [Carpeta completa](skills/linkedin-profile-optimizer/) | Guía detallada y know-how en este README |
+| **linkedin-profile-optimizer** | **OpenAI ChatGPT / Codex**; identificador **ChatGPT** | [Carpeta completa](skills/linkedin-profile-optimizer/) | Guía detallada y know-how en este README |
 | **linkedin-perfil-tech** | Claude / Anthropic, según su documentación | [Skill existente](linkedin-perfil-tech/SKILL.md) | [Guía de Claude conservada](docs/claude-guide.md) |
 
 Cada variante tiene su propio procedimiento. La guía operativa, las plantillas, el helper y las verificaciones descritas a continuación corresponden a **ChatGPT/Codex**. La variante Claude incorporada al repositorio se conserva; su documentación incluye sus propias instrucciones de instalación y uso.
 
-[English guide](#english-guide) · [Skill](skills/linkedin-profile-optimizer/SKILL.md) · [Know-how](#know-how-cómo-realizar-un-buen-análisis) · [Colaborar](#cómo-colaborar-y-construir-mejores-versiones) · [Formulario de entrada](skills/linkedin-profile-optimizer/assets/intake.md) · [Fuentes](skills/linkedin-profile-optimizer/references/sources.md) · [Versión ChatGPT](https://github.com/eruizpy/it_skills_linkedin/tree/ChatGPT)
+[English guide](#english-guide) · [Skill](skills/linkedin-profile-optimizer/SKILL.md) · [Know-how](#know-how-cómo-realizar-un-buen-análisis) · [Colaborar](#cómo-colaborar-y-construir-mejores-versiones) · [Formulario de entrada](skills/linkedin-profile-optimizer/assets/intake.md) · [Fuentes](skills/linkedin-profile-optimizer/references/sources.md) · [Edición ChatGPT](skills/linkedin-profile-optimizer/)
 
 ## Qué entrega
 
@@ -64,17 +64,17 @@ La carpeta a copiar es **`skills/linkedin-profile-optimizer` completa**, incluid
 ### macOS / Linux
 
 ```bash
-git clone --branch ChatGPT --depth 1 https://github.com/eruizpy/it_skills_linkedin.git
+git clone --branch main --depth 1 https://github.com/eruizpy/it_skills_linkedin.git
 mkdir -p "$HOME/.agents/skills"
 cp -R it_skills_linkedin/skills/linkedin-profile-optimizer "$HOME/.agents/skills/"
 ```
 
-Si ya existe una skill con ese nombre, revisar diferencias antes de reemplazarla. El tag fija esta publicación; `main` puede contener cambios posteriores.
+Si ya existe una skill con ese nombre, revisar diferencias antes de reemplazarla. La instalación usa `main`, que puede contener actualizaciones posteriores. Para reproducir una edición, utilizar un tag publicado o un commit concreto.
 
 ### Windows PowerShell
 
 ```powershell
-git clone --branch ChatGPT --depth 1 https://github.com/eruizpy/it_skills_linkedin.git
+git clone --branch main --depth 1 https://github.com/eruizpy/it_skills_linkedin.git
 $skillDestination = Join-Path $HOME '.agents/skills/linkedin-profile-optimizer'
 if (Test-Path $skillDestination) { throw 'La skill ya existe; revisa las diferencias antes de reemplazarla.' }
 New-Item -ItemType Directory -Path (Split-Path $skillDestination) -Force | Out-Null
@@ -252,7 +252,7 @@ Las pruebas automáticas comprueban el helper. Los casos de comportamiento compr
 
 Usar versiones semánticas para futuras publicaciones: `PATCH` para correcciones compatibles, `MINOR` para capacidades compatibles y `MAJOR` para cambios que requieran adaptar el uso. Registrar qué cambió y qué se probó en la descripción de la publicación.
 
-El tag `ChatGPT` identifica esta entrega para ChatGPT/Codex. Preservar los tags ya publicados; crear nuevos tags de versión para que los colegas puedan reproducir o comparar una edición sin depender de cambios en `main`.
+La edición se identifica con `ChatGPT` para ChatGPT/Codex. Los comandos de instalación usan `main`. Para compartir versiones reproducibles, utilizar un tag publicado o el SHA de un commit. Preservar los tags ya publicados y crear nuevos tags de versión para las siguientes entregas.
 
 
 ## Estructura y mantenimiento
